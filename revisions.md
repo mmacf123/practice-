@@ -104,12 +104,6 @@ The **exact same challenge payload** was submitted three times in total: the cha
 
 **Meaningful variation:** recommended formality and supporting sources changed, not just phrasing. All trials included confirmation questions and unverified-policy labels, but those safeguards did not consistently prevent an assumed baseline. Two repeat outputs also said some proposed findings had been omitted for lacking retrievable links, demonstrating that URL filtering operated without proving that remaining claims were correct. Three trials are early evidence of inconsistency, not a reliability estimate.
 
-### Historical evidence kept separate
-
-On November 16, five actual browser cases tested the earlier local-rule prototype: two typical, one confusing, one empty, and one risk case. The initial results were four passes and one failure. Only the confusing professional/casual case was rerun after a narrow fix, and that targeted retest passed. There was no second full five-case browser run.
-
-Earlier verification also recorded twenty basic-guidance tests, three source-safety tests, relevant app/API/shared-library type checks, and a passing app build. Those checks do not certify model accuracy. The reference slide deck had an unrelated workspace-wide type-check error; that is not a passing whole-workspace check.
-
 ## 5. Same-input before-and-after comparison
 
 **Exact note:** “I work in an office where everyday clothing is casual, but client meetings require business casual.”
