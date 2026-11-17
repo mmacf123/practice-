@@ -11,6 +11,10 @@ This assignment evaluates the existing CultureFit prototype. The design, core fl
 
 **Tested application:** the current revised [workspace preview](https://30e3ee6c-9e32-41c0-a119-a4e1984daec2-00-3c31s4sraewjs.worf.replit.dev/). This development address is not a stable public submission link. The [published address](https://Culture-fit.replit.app) is publicly reachable, but its served bundle was checked and appears older than the current revision. The five-case results must not be represented as a test of that older published build.
 
+Demo: https://drive.google.com/file/d/1Ug6dIUdhVbi2-c2ACDVilxnbWFhxZm65/view?usp=sharing 
+
+Replit: https://Culture-fit.replit.app 
+
 ## Peer feedback and response
 
 | Feedback or observed issue | Decision | What changed |
