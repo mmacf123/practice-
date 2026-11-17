@@ -14,8 +14,7 @@ CultureFit helps new professionals feel a sense of belonging through company/tea
 | Risk, safeguards, and over-reliance on AI | [Risk response](#risk-response) |
 | Short evaluation and future priorities | [Evaluation](#evaluation) and [priorities](#future-priorities) |
 | AI tools, actual prompts, corrections, and verification | [AI-use disclosure](#ai-use-disclosure) |
-| Personal 2–3 minute demo speaking script | [Demo speaking script](#demo-speaking-script) |
-| Recorded video | [Demo Video](#demo-video); student must add the link |
+| Recorded video | [Demo Video](#demo-video)|
 
 ## First working slice
 
