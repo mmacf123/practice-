@@ -108,7 +108,7 @@ The five cases support CultureFit's value as a practical starting point: it dist
 2. **Preserve evidence verbatim.** Keep rule matching separate from source display so words such as “but” are not dropped from the quoted guidance.
 3. **Validate with real users and devices.** Check mobile, keyboard/screen-reader use, comfort/accessibility needs, and whether new employees understand and act on the uncertainty warnings.
 
-## How AI helped build CultureFit**
+## How AI helped build CultureFit
 
 Replit Agent assisted with coding, debugging, interface wording, test preparation, documentation, and the later live-research integration. A browser-testing assistant used Playwright to run the five recorded cases and the targeted retest. Playwright, TypeScript, Node's test runner, and Vite were verification/build tools, not AI models.
 
