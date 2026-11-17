@@ -19,7 +19,7 @@ This report describes the **current live-AI feature**. The older simulated/basic
 | Earlier basic-mode browser evidence | [Historical five-case report](artifacts/culturefit/docs/five-case-browser-results.md) |
 | Additional AI-use history | [Supporting disclosure](ai-use-disclosure.md) |
 | Published prototype link and access/version notes | https://Culture-fit.replit.app|
-| Demo Video | https://drive.google.com/file/d/1NBsjEjAihR8UsBsZAlT9fD63wd-HfONh/view?usp=sharing |
+| Demo Video | https://drive.google.com/file/d/1OpP-AoAONKeYgXQhbrgyOIj4ONZpNYXJ/view?usp=sharing |
 
 ## 1. Central user flow and three priority improvements
 
