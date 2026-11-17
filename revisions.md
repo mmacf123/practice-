@@ -1,5 +1,5 @@
-# CultureFit — Revised Prototype, Live-AI Evaluation, and AI-Use Disclosure
- 
+# CultureFit — Revised Prototype
+
 **Intended user:** a person starting a new job who wants practical help with clothing, questions, and settling into a team.
 
 CultureFit turns a short employee brief into a three-part guide: first-week outfit suggestions, questions to ask real workplace contacts, and three first-month milestones. Its goal is to support preparation and belonging, not to decide whether someone “fits” or to certify workplace policy.
