@@ -153,8 +153,6 @@ These are future priorities, not completed work. Process-local limits are not a 
 - **Replit Agent** assisted with React/TypeScript implementation, debugging, interface wording, documentation, test preparation, packaging, and the live AI/search integration. It also drafted this report and ran the new API evaluation script.
 - **AI-assisted browser testing** used Playwright for the historical five cases and targeted retest. The new live evaluation uses HTTP requests, not a new browser-testing assistant run.
 - **OpenAI `gpt-5-mini`** is the model inside the product's live feature. Public web search is part of those runtime requests, separate from development assistance.
-- **Playwright, Python, Node's test runner, TypeScript, and Vite** are software/build/test tools, not model names.
-- **Other AI tools personally used outside the recorded project:** **STUDENT TO COMPLETE: name tools and contributions, or write “None.”**
 
 ### Representative actual prompts and revisions
 
@@ -163,8 +161,6 @@ These are future priorities, not completed work. Process-local limits are not a 
 | “Fix the dress code issue: if a user enters ‘casual everyday, business casual for meetings,’ the result should reflect that. Make instructions clearer and improve how the app handles missing information.” | Occasion-specific guidance and clearer validation | Corrected the earlier single-code approach; checked the mixed-dress scenario and missing inputs |
 | “Actually run the tests against the revised prototype. Do not invent results or automatically mark everything as passing.” | Historical five-case browser evidence and a targeted retest | Preserved the original failure rather than relabeling it an initial pass |
 | “Add AI and web research.” | Server-side live research, consent, personalized suggestions, sources/unknowns, and explicit error handling | Kept the basic option honestly labeled; checked the real endpoint and later added the live cases and repeats in this report |
-
-These are recorded requests or excerpts, not invented example prompts. No credentials are included.
 
 ### Human judgment and corrected AI-assisted work
 
