@@ -21,10 +21,6 @@ This report describes the **current live-AI feature**. The older simulated/basic
 | Published prototype link and access/version notes | https://Culture-fit.replit.app|
 | Demo Video | https://drive.google.com/file/d/1NBsjEjAihR8UsBsZAlT9fD63wd-HfONh/view?usp=sharing |
 
-**Demo status:** this Drive link was present in the existing GitHub `revisions.md`. Its playback, permissions, duration, and coverage of the new live feature have not been verified here. Do not assume the existing recording demonstrates the latest app.
-
-**Publication status:** the previous public access check found an older build. The new evaluation below targets the running workspace API; it does not establish that the public deployment or GitHub code matches that build. Uploading this document and republishing remain separate actions.
-
 ## 1. Central user flow and three priority improvements
 
 ### Central task
