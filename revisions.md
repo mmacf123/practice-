@@ -107,3 +107,8 @@ The five cases support CultureFit's value as a practical starting point: it dist
 1. **Broaden clarification coverage.** Evaluate phrases such as “smart”, “polished”, and vague client-day exceptions, with focused clarification rather than confident guesses.
 2. **Preserve evidence verbatim.** Keep rule matching separate from source display so words such as “but” are not dropped from the quoted guidance.
 3. **Validate with real users and devices.** Check mobile, keyboard/screen-reader use, comfort/accessibility needs, and whether new employees understand and act on the uncertainty warnings.
+
+**How AI helped build CultureFit**
+Replit Agent assisted with coding, debugging, interface wording, test preparation, documentation, and the later live-research integration. A browser-testing assistant used Playwright to run the five recorded cases and the targeted retest. Playwright, TypeScript, Node's test runner, and Vite were verification/build tools, not AI models.
+
+The user supplied the product direction and feedback, required preservation of the existing design, and later requested real AI/web research. AI-assisted output was corrected when it flattened different dress occasions and when testing revealed the ambiguous casual conclusion. This document was also drafted with Replit Agent.
