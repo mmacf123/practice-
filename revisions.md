@@ -29,7 +29,7 @@ Employees can reflect, edit their answers, or start over. Missing required input
 
 ## Open the prototype
 
-**Published address:** [https://Culture-fit.replit.app](https://Culture-fit.replit.app)
+**Published address:** https://culture-fit.replit.app/
 
 **Access/version check — November 16, 2026:** Publishing metadata now reports **public**, and a signed-out request returned HTTP 200 with the CultureFit page. However, the served application bundle lacked the revised “Everyday dress code” and separate meeting-guidance markers present in the current source. The public address appears to serve an older build. Republish the current version and verify the mixed-dress-code example before submitting it as the revised prototype.
 
@@ -37,7 +37,7 @@ Open the address and choose **Build My Guide**. The five new tests use the curre
 
 ## Demo Video
 
-**Google Drive video link: [STUDENT TO ADD AFTER RECORDING AND UPLOADING].**
+**Google Drive video link: https://drive.google.com/file/d/1Ug6dIUdhVbi2-c2ACDVilxnbWFhxZm65/view?usp=sharing **
 
 No video has been recorded or uploaded as part of this work. Use the [speaking script in this README](#demo-speaking-script), record your own 2–3 minute demonstration, and set the Google Drive link so the professor can view it. Test the link signed out before submitting.
 
