@@ -39,8 +39,6 @@ Open the address and choose **Build My Guide**. The five new tests use the curre
 
 **Google Drive video link: https://drive.google.com/file/d/1Ug6dIUdhVbi2-c2ACDVilxnbWFhxZm65/view?usp=sharing **
 
-No video has been recorded or uploaded as part of this work. Use the [speaking script in this README](#demo-speaking-script), record your own 2–3 minute demonstration, and set the Google Drive link so the professor can view it. Test the link signed out before submitting.
-
 ## AI role and prototype status
 
 **Intended AI:** interpret an employee's role, priorities, and supplied company/team guidance to suggest realistic outfits, useful questions, and a supportive first-month plan.
