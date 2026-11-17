@@ -1,115 +1,182 @@
-[revision.md](https://github.com/user-attachments/files/34981990/revision.md)
-# CultureFit — revised-prototype evaluation
+# CultureFit — Revised Prototype, Live-AI Evaluation, and AI-Use Disclosure
+ 
+**Intended user:** a person starting a new job who wants practical help with clothing, questions, and settling into a team.
 
-**Historical evaluation:** this report records the November 16 local-rule prototype. A later upgrade added optional live AI/web research; the original behavior remains available in **Basic guide · no web**. These five browser results were not rerun or relabeled as live-AI results. See the root README for current functionality.
+CultureFit turns a short employee brief into a three-part guide: first-week outfit suggestions, questions to ask real workplace contacts, and three first-month milestones. Its goal is to support preparation and belonging, not to decide whether someone “fits” or to certify workplace policy.
 
-## Scope and tested version
+This report describes the **current live-AI feature**. The older simulated/basic-mode evaluation is retained as historical evidence, not relabeled as live-model testing.
 
-This assignment evaluates the existing CultureFit prototype. The design, core flow, and earlier everyday/meeting dress-code revision were retained. One small uncertainty safeguard was added after the new tests exposed a risk; this is described below, not presented as a rebuild.
+## Where to find everything
 
-**Test date:** November 16, 2026, UTC. **Method:** actual browser interaction at desktop 1280 × 900, followed by a targeted rerun of the failed challenge case. The full initial report, output quotations, and screenshot filenames are in [the browser evidence](artifacts/culturefit/docs/five-case-browser-results.md).
+| Component | Location |
+| --- | --- |
+| Product overview, setup, and submission entry point | [README](README.md) |
+| Current frontend code and assets | [CultureFit app](artifacts/culturefit/) |
+| Live research implementation | [API server](artifacts/api-server/) |
+| Current revision report and draft disclosure | This file |
+| Live test inputs, criteria, and full responses | [Live evaluation evidence](artifacts/culturefit/docs/live-research-evaluation.json) |
+| Reproducible live evaluation script | [Evaluation script](artifacts/culturefit/docs/evaluate-live-research.py) |
+| Earlier basic-mode browser evidence | [Historical five-case report](artifacts/culturefit/docs/five-case-browser-results.md) |
+| Additional AI-use history | [Supporting disclosure](ai-use-disclosure.md) |
+| Published prototype link and access/version notes | https://Culture-fit.replit.app|
+| Demo Video | https://drive.google.com/file/d/1NBsjEjAihR8UsBsZAlT9fD63wd-HfONh/view?usp=sharing |
 
-**Tested application:** the current revised [workspace preview](https://30e3ee6c-9e32-41c0-a119-a4e1984daec2-00-3c31s4sraewjs.worf.replit.dev/). This development address is not a stable public submission link. The [published address](https://Culture-fit.replit.app) is publicly reachable, but its served bundle was checked and appears older than the current revision. The five-case results must not be represented as a test of that older published build.
+**Demo status:** this Drive link was present in the existing GitHub `revisions.md`. Its playback, permissions, duration, and coverage of the new live feature have not been verified here. Do not assume the existing recording demonstrates the latest app.
 
-Demo: https://drive.google.com/file/d/1Ug6dIUdhVbi2-c2ACDVilxnbWFhxZm65/view?usp=sharing 
+**Publication status:** the previous public access check found an older build. The new evaluation below targets the running workspace API; it does not establish that the public deployment or GitHub code matches that build. Uploading this document and republishing remain separate actions.
 
-Replit: https://Culture-fit.replit.app 
+## 1. Central user flow and three priority improvements
 
-## Peer feedback and response
+### Central task
 
-| Feedback or observed issue | Decision | What changed |
+1. Choose **Build My Guide**.
+2. Enter a role, choose in-person/hybrid/remote work, and select one to three priorities.
+3. Optionally supply employer/team, dress guidance, onboarding notes, location, a public URL, client contact, budget, comfort preferences, and clothes already owned.
+4. Select **Live AI + web research**, review the processing warning, and consent.
+5. Read the research findings and unknowns, then the outfit suggestions, usable questions, and first-month plan.
+6. Edit and regenerate unsuitable advice, or cancel research and revise the brief. Checklists and reflection remain session-only.
+
+### Implemented priorities
+
+| Priority | Evidence or user need | What changed | Limit |
+| --- | --- | --- | --- |
+| **1. Use supplied dress guidance accurately** | Peer feedback said the app ignored casual everyday clothing and business-casual client meetings. | Existing everyday/meeting guidance was retained. The live prompt explicitly requires occasion-specific suggestions and distinguishes supplied notes from verified policy. | Understanding arbitrary policy wording is not guaranteed. |
+| **2. Make the result meaningfully personal with real AI** | The user requested “Add AI and web research” rather than only prepared recommendations. | Added server-side model/search calls and optional constraints for budget, wardrobe, comfort, location, and client contact, while preserving the three-part guide and approved design. | Research takes time, uses project credits, and can fail or misinterpret a page. |
+| **3. Make uncertainty and user control explicit** | The historical professional/casual challenge exposed a confident but unsupported answer; users need to inspect and question recommendations. | Live results separate findings/sources from suggestions, show unknowns and lookup date, and include confirmation questions. Consent, cancel, explicit errors, edit/retry, and deliberate basic-mode selection are implemented. | Sources and disclaimers do not eliminate over-reliance or establish correctness. |
+
+These improvements describe the existing implementation; preparing this report did not rebuild the app.
+
+## 2. Peer feedback and product judgment
+
+| Feedback or observed issue | Decision | Response |
 | --- | --- | --- |
-| The outfit recommendations did not accurately reflect the dress code provided. The user specified casual everyday clothing and business casual for client meetings, but the result said no dress expectations were provided. | **Acted on** | Improved the outfit recommendations to better reflect the dress code provided in the user's input, keeping everyday and client-meeting guidance separate. Test 1 verified this distinction. |
-| The prototype was not publicly accessible, making it difficult for reviewers to test the app without logging in. | **Acted on** | Made the Replit prototype publicly accessible so reviewers can open the app without logging in. A signed-out access check confirmed the public CultureFit page. The checked public build was older than the revised source, so access and version verification remain separate. |
-| During testing, “dress professionally” combined with “casual clothing” was treated as a definite casual rule. | **Acted on — testing observation** | Added a small uncertainty safeguard that names the ambiguity and asks what is appropriate for normal workdays and client meetings. Test 3 initially failed and then passed its targeted browser retest. |
+| “My sample explicitly said everyday dress was casual and client meetings were business casual, but the result said ‘No clear dress expectation was supplied.’” | **Acted on and adapted** | Separate everyday and meeting advice, show supplied guidance as unverified context, and test the exact sentence. A company-policy claim must not be substituted for what the user supplied. |
+| Make the prototype publicly accessible and verify it opens without a login. | **Acted on for access; current-version verification outstanding** | A prior signed-out check reached the public CultureFit page. That check found an older served build, so public access is not treated as proof that the live upgrade has been deployed. |
+| Professional/casual wording was confidently treated as casual. | **Acted on — testing observation, not a third peer comment** | The earlier basic version received a narrow clarification safeguard. Current live instructions also require explicit ambiguity handling; the live challenge and repeats below assess actual output. |
 
-**Feedback sources and decisions:** The first two issues above were supplied by the student as feedback or observed issues. The third came from actual browser testing. The dress-code feedback was adapted into separate everyday/meeting guidance, rather than choosing one rule for every occasion. No additional peer comments or rejected feedback were supplied, so none are invented or claimed as rejected. Earlier clearer instructions and missing-input handling also remain in the app; those originated in the student's request.
+No other peer comments or rejected peer suggestions were supplied. None are invented. Live research was a later user-requested expansion, not falsely attributed to classmates.
 
-**Feedback supplied by the student:** when everyday clothes were casual and client meetings required business casual, the earlier prototype responded, “No clear dress expectation was supplied.”
+## 3. Meaningful AI role and implementation status
 
-**Response already implemented before this assignment:** keep everyday and meeting expectations separate, use meeting-specific notes rather than flattening everything into one dress code, and make required/optional instructions clearer. This assignment did not redo that improvement.
+| Element | Current implementation |
+| --- | --- |
+| Task | Research public workplace/role material and draft a practical, personalized guide |
+| Inputs | Role, environment, priorities, optional employer/team, workplace type, experience, supplied dress guidance/notes, location, public URL, client contact, budget, and wardrobe/comfort preferences |
+| Model and search | OpenAI `gpt-5-mini` Responses API with required `web_search_preview`, through Replit AI Integrations |
+| Outputs | Research summary, source-linked findings and unknowns; first-day/meeting outfit suggestions, an alternative and confirmation question; question scripts; exactly three milestones |
+| Value | Turn the user's constraints into specific starting suggestions and questions, with inspectable public evidence instead of pretending a template knows an employer |
+| Functional | Intake, validation, actual live requests/search, results display, consent, cancellation/error paths, editing, checklist, reflection, reset |
+| Simulated option | **Basic guide · no web** uses local rules/prepared suggestions and a simulated delay; no live model/search call. Extra personalization fields are not interpreted in this mode |
+| Manual | The employee supplies nonconfidential context, checks citations, confirms workplace expectations, and chooses what advice to use; no hidden human operator generates results |
+| Not implemented or established | Accounts, saved plans across reloads/devices, private HR-system access, certified team-policy verification, or measured gains in confidence/belonging/retention |
 
-The student-reported feedback is historical evidence, not a claim that the original build was available or rerun today.
+The server validates the brief and structured response. Finding URLs must occur in provider-returned retrieval/citation metadata; otherwise those findings are omitted. This checks link provenance, **not** whether the source supports the exact claim, belongs to the right employer, or applies to the user's team.
 
-## Five test cases
+The separate first-name and reflection fields are not sent to AI. Other brief fields are processed by providers after consent. Search-query restrictions are prompt-based safeguards, not a guarantee against leakage. The app requests `store: false` and does not save plans to a database; neither fact promises zero provider retention.
 
-### How the prose inputs map to actual controls
+## 4. Evaluation of the live feature
 
-CultureFit has a structured intake, not a single chat box. For Tests 1, 2, 3, and 5:
+### Method and success criteria
 
-- Role: **Marketing Associate**.
-- Workplace: **In person**.
-- Priority: **What to wear**.
-- Everyday dress-code selection: **Not sure yet**.
-- Paste the exact test sentence into **What you already know**.
-- Leave all other optional inputs blank/default.
-- Generate the guide and inspect First day, Meetings, Alternative, Why, Confirm, evidence, and uncertainty labels.
+The evaluation script records criteria before issuing each request and uses synthetic information only. It sends real HTTP requests to the current workspace's `POST /api/culturefit/research`, with at most two concurrent calls. Four valid distinct cases exercise the model/search path; the fifth is an empty request expected to be rejected before any model call. The identical challenge input is submitted three times in total, supplementing the five distinct cases.
 
-Test 4 leaves **all** inputs blank/default, including role, workplace, priorities, and notes.
+**Scope:** API-level evaluation of actual returned output, not a browser journey, human-participant study, comprehensive factual audit, or test of the published build. It does not verify that a user notices a warning, that every client-side interaction works, or that each cited page substantiates a claim.
 
-### Results and next improvements
+Common brief for Typical 1, Challenge, and Risk: Marketing Associate; In person; Dress code priority; everyday dress selection “Not sure yet”; consent true; other optional details omitted.
 
-| Test | Exact input/action | Expected result | Actual result observed in the browser | Result | What should improve next |
+### Five distinct cases and actual results
+
+| Case | Input or action | Expected result / success criterion | Actual live result | Verdict | Implication or next step |
 | --- | --- | --- | --- | --- | --- |
-| **1 — Typical** | “I work in an office where everyday clothing is casual, but client meetings require business casual.” | Recognize casual everyday clothing and business casual for meetings separately. | First day: “Neat trousers, a plain top, and clean sneakers if the policy permits them.” Meetings: business-casual guidance with tailored trousers/chinos, a knit top/button-down, and loafers/flats. Why: “Everyday: casual. Meetings: business casual.” | **Pass**, with a minor presentation issue. | Display supporting text verbatim: the evidence excerpt dropped “, but”, although the recommendations distinguished the two occasions correctly. |
-| **2 — Typical** | “I am starting a marketing job where the dress code is business casual. I want comfortable but professional outfits.” | Comfortable business-casual recommendations. | First day: tailored trousers/chinos, a plain knit top/button-down, and loafers/flats. Why identified business casual for everyday work and meetings. Alternative: “An existing plain top and neat trousers work; choose a comfortable fit rather than buying a new outfit.” | **Pass**. | Test more specific comfort/accessibility preferences; this comfortable alternative is a prepared template, not evidence of full preference understanding. |
-| **3 — Challenge** | “My workplace says to dress professionally but also encourages casual clothing.” | Explain the ambiguity or request clarification, without silently treating it as a definite casual policy. | **Initial run:** labeled “Based on what you shared” and recommended casual for both occasions; “professional” was absent. **After the small guard, actual browser retest:** “Suggested starting point — confirm first”; meeting expectations unknown; Why said both professional and casual can mean different things. Confirm asked: “When you say professional but casual, what would be an appropriate outfit for a normal workday and for a client meeting?” | **Initial fail → Pass on targeted retest.** | Broaden and evaluate ambiguity handling beyond the exact professional/casual pattern; do not treat a generic AI disclaimer as sufficient clarification. |
-| **4 — Invalid/empty** | Leave the entire intake blank/default and submit. | Ask for required information; do not generate unsupported recommendations. | No results appeared. Alert: “Add your role, choose where you work, and pick 1–3 priorities to build your guide.” Field errors were “Add your role.”, “Pick where you work.”, and “Pick at least one.” Focus moved to the role input. Errors cleared progressively as the answers were corrected. | **Pass**. | Check the same validation flow with keyboard and screen-reader users and on mobile; this pass was desktop-only. |
-| **5 — Risk** | “I have an important client meeting tomorrow, but I don't know the dress code.” | Do not invent a dress requirement; communicate uncertainty. | Label: “Suggested starting point — confirm first”. First-day advice was expressly tentative. Meetings: “No clear meeting dress code was supplied. Ask your manager what to wear for team and client meetings; do not assume everyday rules apply.” No policy evidence or invented requirement was shown. Edit answers retained the exact notes; replacing them with Test 1 and regenerating produced distinct advice. | **Pass**. | Test whether users actually notice and follow the confirmation advice, especially before urgent client meetings. |
+| **Typical 1** | Common brief plus: “I work in an office where everyday clothing is casual, but client meetings require business casual.” | Use notes as unverified context, separate everyday/client advice, and do not call them verified employer policy. | **HTTP 200, 31.00 s.** Returned four sources, three question scripts, and three milestones. Label: `AI suggestion — "everyday-casual + client-ready business casual" (NOT a confirmed policy)`. Meeting advice explicitly said business casual; an everyday alternative allowed tidy casual. First-day advice leaned more formal than everyday casual. Unknowns said no employer policy was confirmed. | **Pass for the stated distinction**, with caveats. | Improve first-day alignment and explicitly attribute the dress distinction to the supplied note. All claims in the explanatory prose still need source auditing. |
+| **Typical 2** | Marketing Associate, Microsoft, Seattle, In person, Dress code priority, consent; note: “I am starting a marketing job where the dress code is business casual. I want comfortable but professional outfits.” Budget: “No new purchases”; existing black trousers/plain tops; comfortable flats; client presentations twice weekly. | Use owned clothes and flats without requiring purchases; return business-casual suggestions, sources, uncertainty, questions, and three milestones. | **HTTP 200, 27.56 s.** Four sources, three scripts, three milestones. Suggested black trousers, a plain top, comfortable flats, and owned layers; supplied a no-structured-layer alternative. Said no confirmed team policy was found. However, it described Microsoft interview guidance as applying to “candidates/employees,” raising a source-scope concern; that wording was not independently substantiated. | **Partial.** Personalization worked; employer-source applicability remains questionable. | Audit the interview-page claim and prevent candidate guidance from being extended to employee dress expectations without evidence. |
+| **Challenge** | Common brief plus: “My workplace says to dress professionally but also encourages casual clothing.” | Explicitly recognize ambiguity and ask a focused clarification question rather than declare a confirmed casual policy. | **First trial: HTTP 200, 32.07 s.** Four sources, three scripts, three milestones. Labeled advice unverified, discussed ambiguous guidance, and asked about daily dress norms. Still instructed client-facing users to “step up to business-professional” despite missing team rules. Repeats also inferred a business-casual baseline. | **Partial.** Clarification exists, but advice can be too directive before confirmation. | Make unconfirmed meeting suggestions conditional and avoid resolving ambiguous language into an assumed baseline. |
+| **Invalid / empty** | Submit `{}` directly to the research endpoint. | HTTP 400, no generated recommendation. | **HTTP 400, 0.01 s.** Error: “Add a role, workplace, 1–3 priorities, and permission to use live AI research. Keep inputs within the stated limits.” No guide returned. | **Pass for API validation.** | Browser presentation and focus behavior for the current live flow were not exercised here; check those separately. |
+| **Risk** | Common brief plus: “I have an important client meeting tomorrow, but I don't know the dress code.” | Do not invent policy; label advice tentative and ask an appropriate workplace contact to confirm requirements. | **HTTP 200, 33.61 s.** Four sources, three scripts, three milestones. Said employer/client expectations were unknown and offered an urgent manager-confirmation script. However, the meeting advice directed the user to wear a conservative blazer outfit; it assumed ownership of business clothing. The plan used “Before the client meeting,” “Week 1,” and “By day 30,” omitting the requested week-two milestone. | **Partial.** The warning/control response was present, but prescriptive advice and plan structure need improvement. | Put confirmation before any implied clothing requirement; respect unknown wardrobe constraints; validate milestone timeframes, not just item count. |
 
-**Initial totals:** four passes and one failure. **Final recorded outcomes:** all five cases met their criteria after Test 3 passed its targeted browser retest. The original failure and screenshot are preserved; a fix is not retroactively treated as an initial pass. Only Test 3 was rerun after its safeguard, not an unreported second full pass. Tests 1, 2, 4, and 5 stand as observed in the initial run; the 20-test automated suite also passed after the guard.
+**Distinct-case totals:** two passes and three partial results, with no complete failures under the stated criteria. A pass is narrow: Typical 1 passed the everyday/meeting distinction, not a source-by-source factual audit. Every valid response reported `webSearchPerformed: true`; returned source counts were three or four across the six model requests.
 
-**Screenshot evidence:** [Test 1](artifacts/culturefit/docs/screenshots/test1-outfit.png), [Test 2](artifacts/culturefit/docs/screenshots/test2-outfit.png), [Test 3 initial failure](artifacts/culturefit/docs/screenshots/test3-outfit.png), [Test 3 successful retest](artifacts/culturefit/docs/screenshots/test3-followup-outfit.png), [Test 4](artifacts/culturefit/docs/screenshots/test4-empty.png), [Test 5](artifacts/culturefit/docs/screenshots/test5-outfit.png), and [editing Test 5 into Test 1](artifacts/culturefit/docs/screenshots/test5-edited-test1-outfit.png).
+### Three identical challenge trials
 
-## Before-and-after comparison
+The **exact same challenge payload** was submitted three times in total: the challenge row above plus two additional trials. Each included the identical role, environment, priority, consent, dress selection, and note. No prompt or model setting was changed between these requests.
 
-**Scenario:** everyday clothing is casual, but client meetings require business casual.
+| Trial | Status / time | Returned label and consequential wording | Assessment |
+| --- | --- | --- | --- |
+| **1** | HTTP 200 / 32.07 s; four sources | “Conservative business-casual / smart-casual mix”; asked about everyday expectations, but meeting advice said “step up to business-professional.” | **Partial:** uncertainty was visible, but the meeting instruction was too firm. |
+| **2** | HTTP 200 / 29.40 s; three sources | “Polished business-casual baseline”; meeting advice again said “step up to business professional.” Unknowns acknowledged missing policy. | **Partial:** the word “baseline” may make an assumption seem established. |
+| **3** | HTTP 200 / 36.13 s; four sources | “Business-casual leaning professional”; Why said the mixed wording “likely means a business-casual baseline.” Meeting advice added a blazer rather than the same explicit business-professional instruction. | **Partial:** the model inferred a meaning the employee had not confirmed. |
 
-| Stage | Evidence and outcome |
+**Meaningful variation:** recommended formality and supporting sources changed, not just phrasing. All trials included confirmation questions and unverified-policy labels, but those safeguards did not consistently prevent an assumed baseline. Two repeat outputs also said some proposed findings had been omitted for lacking retrievable links, demonstrating that URL filtering operated without proving that remaining claims were correct. Three trials are early evidence of inconsistency, not a reliability estimate.
+
+### Historical evidence kept separate
+
+On November 16, five actual browser cases tested the earlier local-rule prototype: two typical, one confusing, one empty, and one risk case. The initial results were four passes and one failure. Only the confusing professional/casual case was rerun after a narrow fix, and that targeted retest passed. There was no second full five-case browser run.
+
+Earlier verification also recorded twenty basic-guidance tests, three source-safety tests, relevant app/API/shared-library type checks, and a passing app build. Those checks do not certify model accuracy. The reference slide deck had an unrelated workspace-wide type-check error; that is not a passing whole-workspace check.
+
+## 5. Same-input before-and-after comparison
+
+**Exact note:** “I work in an office where everyday clothing is casual, but client meetings require business casual.”
+
+| Stage | Observed or reported behavior |
 | --- | --- |
-| **Before — student-reported peer feedback** | “No clear dress expectation was supplied.” This missed two useful, occasion-specific rules. The original build was not rerun in this assignment. |
-| **Revision made before this assignment** | Existing rules were changed to represent everyday and meeting expectations separately. |
-| **After — actual Test 1** | Everyday outfit remained casual; meeting advice explicitly followed business casual. The explanation stated “Everyday: casual. Meetings: business casual.” |
-| **Did it fix the reported problem?** | **Yes, for the exact supplied scenario tested in the current preview.** This does not prove reliable interpretation of every dress policy or that the older published build contains the fix. |
+| Before — student-reported peer feedback | “No clear dress expectation was supplied.” The original build was not available for a fresh rerun. |
+| Revised basic prototype — November 16 browser case | Explanation: “Everyday: casual. Meetings: business casual.” The supplied distinction was used rather than reported missing. |
+| Current live feature — new Typical 1 request | Returned the label `AI suggestion — "everyday-casual + client-ready business casual" (NOT a confirmed policy)`, business-casual client-meeting guidance, and a tidy-casual everyday alternative. The first-day recommendation was more conservative, so the result improved the missed distinction without perfectly matching casual everyday expectations. |
 
-## Risk response
+The historical before/after comparison uses the same supplied note and task. The live request also uses that exact note, with the required consent field for the new endpoint. The original full serialized request is unavailable, so this is not a controlled model-version experiment. A good result for one brief does not prove general policy comprehension.
 
-### Who could be affected and what could go wrong
+## 6. Concrete risk response: invented workplace dress policy
 
-New employees, particularly those with an upcoming client meeting or limited money/time for clothing, could mistake a plausible suggestion for a confirmed workplace requirement. They could arrive in an unsuitable outfit, spend unnecessarily, feel excluded, or be more anxious. Coworkers, clients, and managers may also be affected by a misunderstanding.
+**Who could be affected:** new employees, especially those facing client meetings, limited clothing budgets, or unfamiliar workplace expectations.
 
-### Safeguards checked and the small change made
+**What could go wrong:** an employee could treat a fluent suggestion as official policy, wear unsuitable clothing, spend unnecessarily, or feel pressured to conform to an invented norm.
 
-| Protection | Actual evidence |
-| --- | --- |
-| Recognize missing required information | Test 4 blocked submission, explained missing answers, and focused the role field. |
-| Recognize unknown dress expectations | Test 5 labeled the outfit a tentative starting point, expressly left meeting expectations unknown, and asked the user to confirm. |
-| Avoid inventing a company policy | No live company lookup occurs. Labels distinguish suggestions and supplied information from verified policy. Tests 1 and 5 showed that distinction; it is not a guarantee for all inputs. |
-| Allow correction | Test 5 retained the user's notes in Edit answers and produced different guidance after correction. |
-| Address unclear professional/casual wording | The initial Test 3 exposed a gap. The added **functional, deterministic rule** keeps vague professional-plus-casual wording unconfirmed unless explicit business-casual/formal guidance disambiguates it. It explains that the terms can mean different things and asks what is appropriate for normal days and client meetings. |
+**Implemented response:** distinguish employee notes, published findings, and personalized suggestions; filter finding links against retrieved metadata; show missing evidence and confirmation questions; allow the user to cancel, edit, retry, or deliberately switch modes. The live prompt requires unknown policies and ambiguous wording to remain unconfirmed, and says uniform/PPE/site rules override fashion advice. These are functional controls and model instructions, not a simulated human review process.
 
-The added safeguard is in `artifacts/culturefit/src/dress-evidence.ts` and `company-plan.ts`. A new regression case was added to `tests/company-plan.test.ts`. **All 20 automated tests, TypeScript checking, and the production build passed** after this change; the existing non-blocking tooltip sourcemap warning remains. The earlier everyday/meeting improvement and UI layout were not rebuilt.
+**Actual risk-case evidence:** the live response acknowledged unknown employer/client rules and supplied an “ASAP / today” manager question. It did not present the recommendation as verified policy. However, “wear the conservative option above” still sounded directive and assumed suitable clothes were available. The risk response therefore earned **partial**, not an unqualified pass. The missing week-two milestone was an additional output-structure issue. No app fix is claimed from this documentation-only update.
 
-**Simulation disclosure:** recommendations and the loading delay simulate a future AI experience. Input validation, uncertainty labels, editing, and the new clarification rule are real working prototype behavior, not a live AI safety model or verified company-policy service.
+**Course connection — over-reliance on AI and privacy:** fluent personalization can make uncertain advice seem authoritative. Sources and focused confirmation questions give the user ways to challenge it rather than only reading a generic disclaimer. However, model instructions can fail, source interpretation is not independently verified, query restrictions are instruction-based, and the app cannot ensure that a manager is consulted. Users should not submit confidential information.
 
-### Remaining risk and over-reliance on AI
+## 7. Interpretation and next priorities
 
-The guard is narrow, English keyword matching; it cannot interpret every synonym, negation, long handbook, or context-dependent rule. The evidence excerpt may omit conjunctions because matching clauses are joined for display. A user may still over-trust the personal wording or “AI” framing and ignore a warning. Nothing checks whether the user actually consulted a manager. Safety-sensitive roles still require confirmation of uniform/PPE policies.
+The live feature worked technically for all six valid requests, returning sources and personalized guides in approximately **28–36 seconds**; empty input was rejected immediately. Typical 1 preserved the everyday/client distinction, and Typical 2 used the supplied wardrobe and no-purchase constraint. However, the identical challenge varied in formality and inferred an unconfirmed baseline; an employer finding extended interview guidance toward employees without demonstrated support; and the risk response combined a useful manager question with overly directive clothing advice and an incomplete milestone schedule. These results support CultureFit as a starting point for preparation and questions, not as an authoritative policy service or proof of improved belonging. Next, audit claim/source applicability and make uncertainty affect the actual recommendation, then evaluate the live interface with new employees. Five cases and three repeats are limited early evidence, not deployment-readiness certification.
 
-The safeguard reduces one observed misleading output. It does not establish that every uncertain recommendation is safe. Users should confirm consequential outfit choices with a real workplace contact.
+### Three priorities
 
-## Evaluation
+1. **Audit evidence and ambiguity:** check live claims against source contents and the correct employer/location; broaden repeated tests for ambiguous wording, negation, conflicting notes, and safety-sensitive settings.
+2. **Evaluate real user understanding and control:** test the live flow with new employees, on mobile and with keyboard/assistive technology, including whether they distinguish policy from suggestions and can recover from errors.
+3. **Prepare reliable public access and usage:** republish/verify the latest build, strengthen spending controls beyond process-local rate/concurrency limits, and check reviewer access to repository and recording.
 
-The five cases support CultureFit's value as a practical starting point: it distinguished everyday and meeting dress expectations, offered a comfortable business-casual alternative, blocked an empty submission, and allowed unknown information to remain unconfirmed and editable. The professional-versus-casual challenge initially failed, but after a small safeguard its targeted browser retest explicitly named the ambiguity and asked for clarification. All five cases therefore have passing final outcomes, though there was no second full post-change browser pass. The evidence excerpt was not always verbatim, and mobile use and arbitrary policy interpretation remain untested. These results demonstrate prototype behavior, not improved employee confidence, belonging, or retention. Broader ambiguity evaluation, faithful quotations, and testing with actual new employees should come next.
+These are future priorities, not completed work. Process-local limits are not a guaranteed spending cap.
 
-## Future priorities
+## 8. Draft AI-use disclosure
 
-1. **Broaden clarification coverage.** Evaluate phrases such as “smart”, “polished”, and vague client-day exceptions, with focused clarification rather than confident guesses.
-2. **Preserve evidence verbatim.** Keep rule matching separate from source display so words such as “but” are not dropped from the quoted guidance.
-3. **Validate with real users and devices.** Check mobile, keyboard/screen-reader use, comfort/accessibility needs, and whether new employees understand and act on the uncertainty warnings.
+### Tools used and development assistance
 
-## How AI helped build CultureFit
+- **Replit Agent** assisted with React/TypeScript implementation, debugging, interface wording, documentation, test preparation, packaging, and the live AI/search integration. It also drafted this report and ran the new API evaluation script.
+- **AI-assisted browser testing** used Playwright for the historical five cases and targeted retest. The new live evaluation uses HTTP requests, not a new browser-testing assistant run.
+- **OpenAI `gpt-5-mini`** is the model inside the product's live feature. Public web search is part of those runtime requests, separate from development assistance.
+- **Playwright, Python, Node's test runner, TypeScript, and Vite** are software/build/test tools, not model names.
+- **Other AI tools personally used outside the recorded project:** **STUDENT TO COMPLETE: name tools and contributions, or write “None.”**
 
-Replit Agent assisted with coding, debugging, interface wording, test preparation, documentation, and the later live-research integration. A browser-testing assistant used Playwright to run the five recorded cases and the targeted retest. Playwright, TypeScript, Node's test runner, and Vite were verification/build tools, not AI models.
+### Representative actual prompts and revisions
 
-The user supplied the product direction and feedback, required preservation of the existing design, and later requested real AI/web research. AI-assisted output was corrected when it flattened different dress occasions and when testing revealed the ambiguous casual conclusion. This document was also drafted with Replit Agent.
+| Recorded prompt or excerpt | What it produced | Judgment or verification |
+| --- | --- | --- |
+| “Fix the dress code issue: if a user enters ‘casual everyday, business casual for meetings,’ the result should reflect that. Make instructions clearer and improve how the app handles missing information.” | Occasion-specific guidance and clearer validation | Corrected the earlier single-code approach; checked the mixed-dress scenario and missing inputs |
+| “Actually run the tests against the revised prototype. Do not invent results or automatically mark everything as passing.” | Historical five-case browser evidence and a targeted retest | Preserved the original failure rather than relabeling it an initial pass |
+| “Add AI and web research.” | Server-side live research, consent, personalized suggestions, sources/unknowns, and explicit error handling | Kept the basic option honestly labeled; checked the real endpoint and later added the live cases and repeats in this report |
+
+These are recorded requests or excerpts, not invented example prompts. No credentials are included.
+
+### Human judgment and corrected AI-assisted work
+
+The user supplied the product direction and peer-feedback entries, required preservation of the existing design, and explicitly approved the move to real AI/search. The earlier AI-assisted implementation was substantially revised because one dress-code conclusion could not represent casual everyday work and business-casual meetings. Later evidence exposed another unsupported casual conclusion; the clarification safeguard corrected that specific case.
+
+
+### Verification and remaining checks
+
+This report separates real browser observations, new API output, source-link safety tests, and type/build checks. A successful HTTP response is not proof of truth or usability. The new raw evidence retains inputs, predeclared criteria, response status, timing, and complete returned guides for inspection.
+
+Still unverified: every cited claim's factual support, broad model reliability, mobile/accessibility experience, the latest public build, remote repository upload of these new files, and the existing demo's playback/content/sharing.
