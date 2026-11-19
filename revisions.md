@@ -6,21 +6,6 @@ CultureFit turns a short employee brief into a three-part guide: first-week outf
 
 This report describes the **current live-AI feature**. The older simulated/basic-mode evaluation is retained as historical evidence, not relabeled as live-model testing.
 
-## Where to find everything
-
-| Component | Location |
-| --- | --- |
-| Product overview, setup, and submission entry point | [README](README.md) |
-| Current frontend code and assets | [CultureFit app](artifacts/culturefit/) |
-| Live research implementation | [API server](artifacts/api-server/) |
-| Current revision report and draft disclosure | This file |
-| Live test inputs, criteria, and full responses | [Live evaluation evidence](artifacts/culturefit/docs/live-research-evaluation.json) |
-| Reproducible live evaluation script | [Evaluation script](artifacts/culturefit/docs/evaluate-live-research.py) |
-| Earlier basic-mode browser evidence | [Historical five-case report](artifacts/culturefit/docs/five-case-browser-results.md) |
-| Additional AI-use history | [Supporting disclosure](ai-use-disclosure.md) |
-| Published prototype link and access/version notes | https://Culture-fit.replit.app|
-| Demo Video | https://drive.google.com/file/d/1OpP-AoAONKeYgXQhbrgyOIj4ONZpNYXJ/view?usp=sharing |
-
 ## 1. Central user flow and three priority improvements
 
 ### Central task
