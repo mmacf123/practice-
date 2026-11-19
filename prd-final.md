@@ -1,4 +1,3 @@
-[prd-final.md](https://github.com/user-attachments/files/35063407/prd-final.md)
 # CultureFit — Final Product Requirements Document
 
 ## 1. Problem and primary user
