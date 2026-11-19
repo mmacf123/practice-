@@ -80,6 +80,6 @@ Common `.env`, credential, and private-key files are excluded by `.gitignore`, a
 | AI-Use Disclosure | https://github.com/mmacf123/practice-/blob/main/revisions.md  |
 | Working CultureFit Prototype | [Open CultureFit](https://culture-fit.replit.app/) |
 | Demo Video | https://drive.google.com/file/d/1OpP-AoAONKeYgXQhbrgyOIj4ONZpNYXJ/view?usp=sharing|
-| Final Project Slide | ? |
+| Final Project Slide | https://docs.google.com/presentation/d/1YesO2X2WDcXVxNWJ7is9wR9YFHJX4QGlXnkLyWfdr_8/edit?usp=sharing |
 
 **Prototype status:** The checkpoint version uses simulated AI recommendations based on prepared rules and templates. Live AI and web research are future improvements, not implemented features.
