@@ -70,7 +70,7 @@ Common `.env`, credential, and private-key files are excluded by `.gitignore`, a
 2. Open **Publishing** and change the app's access to **Public**. Replit's documentation says changing visibility may require unpublishing and republishing; unpublishing temporarily takes the live app offline. Review the publishing options and confirm the action yourself.
 3. Open the published address in a signed-out/incognito browser and confirm the current CultureFit landing, intake, and guide are accessible without workspace access. Submit that app address alongside the public repository link.
 
-This README is the starting point for all CultureFit final project materials.
+## This README is the starting point for all CultureFit revision + final project materials.
 
 | Component | Document |
 |---|---|
