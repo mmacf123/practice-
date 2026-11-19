@@ -79,7 +79,9 @@ Evidence comes from recorded prototype tests and supplied feedback, not a new st
 | The November 16 basic-mode browser evaluation initially produced four passes and one failure: “professional but casual” was treated too confidently. | Add a narrow ambiguity safeguard. Only the failed case was retested and passed. This supports that specific basic-mode correction; it does not establish live-model reliability. |
 | The November 17 live-endpoint evaluation produced two passes and three partial results across five distinct cases. | Retain live research and personalization while reporting remaining uncertainty. Owned-clothes personalization worked, but an interview source was extended toward employee guidance. Three identical challenge trials varied in formality and still assumed a baseline; the risk case omitted week two. Prioritize source applicability and conditional advice. |
 
-**Linked evidence:** https://github.com/mmacf123/practice-/blob/main/revisions.md 
+**Linked evidence:** 
+https://github.com/mmacf123/practice-/blob/main/revisions.md 
+https://github.com/mmacf123/practice-/blob/main/README.md
 
 ## 7. Limitations and Next Priorities
 
