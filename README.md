@@ -70,4 +70,16 @@ Common `.env`, credential, and private-key files are excluded by `.gitignore`, a
 2. Open **Publishing** and change the app's access to **Public**. Replit's documentation says changing visibility may require unpublishing and republishing; unpublishing temporarily takes the live app offline. Review the publishing options and confirm the action yourself.
 3. Open the published address in a signed-out/incognito browser and confirm the current CultureFit landing, intake, and guide are accessible without workspace access. Submit that app address alongside the public repository link.
 
-**Canvas submission note:** “The three test results are in the ‘Three test results’ section of README.md. Current limitations and planned improvements are in ‘Known limitations and next steps.’”
+This README is the starting point for all CultureFit final project materials.
+
+| Component | Document |
+|---|---|
+| Final Product Requirements Document | https://github.com/mmacf123/practice-/blob/main/prd-final.md |
+| Implementation and Ethics Reflection | https://github.com/mmacf123/practice-/blob/main/Implementation%20and%20Ethics%20Reflection.md |
+| November 19 Prototype Revision, Tests, and Feedback | https://github.com/mmacf123/practice-/blob/main/revisions.md  |
+| AI-Use Disclosure | https://github.com/mmacf123/practice-/blob/main/revisions.md  |
+| Working CultureFit Prototype | [Open CultureFit](https://culture-fit.replit.app/) |
+| Demo Video | https://drive.google.com/file/d/1OpP-AoAONKeYgXQhbrgyOIj4ONZpNYXJ/view?usp=sharing|
+| Final Project Slide | ? |
+
+**Prototype status:** The checkpoint version uses simulated AI recommendations based on prepared rules and templates. Live AI and web research are future improvements, not implemented features.
