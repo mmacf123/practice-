@@ -129,7 +129,7 @@ The live feature worked technically for all six valid requests, returning source
 
 These are future priorities, not completed work. Process-local limits are not a guaranteed spending cap.
 
-## 8. Draft AI-use disclosure
+## 8. AI-use disclosure
 
 ### Tools used and development assistance
 
