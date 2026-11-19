@@ -6,8 +6,8 @@ CultureFit turns a short employee brief into a three-part guide: first-week outf
 
 This report describes the **current live-AI feature**. The older simulated/basic-mode evaluation is retained as historical evidence, not relabeled as live-model testing.
 
-## Demo: https://drive.google.com/file/d/1OpP-AoAONKeYgXQhbrgyOIj4ONZpNYXJ/view?usp=sharing
-## https://culture-fit.replit.app/
+**Demo**: https://drive.google.com/file/d/1OpP-AoAONKeYgXQhbrgyOIj4ONZpNYXJ/view?usp=sharing
+**Prototype**: https://culture-fit.replit.app/
 
 ## 1. Central user flow and three priority improvements
 
