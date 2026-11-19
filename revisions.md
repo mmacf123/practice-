@@ -147,6 +147,7 @@ These are future priorities, not completed work. Process-local limits are not a 
 - **Replit Agent** assisted with React/TypeScript implementation, debugging, interface wording, documentation, test preparation, packaging, and the live AI/search integration. It also drafted this report and ran the new API evaluation script.
 - **AI-assisted browser testing** used Playwright for the historical five cases and targeted retest. The new live evaluation uses HTTP requests, not a new browser-testing assistant run.
 - **OpenAI `gpt-5-mini`** is the model inside the product's live feature. Public web search is part of those runtime requests, separate from development assistance.
+- **AI Use for Final Project** I used ChatGPT to help proofread and improve my `prd-final.md` and `implementation-ethics.md` files. AI helped me organize my ideas, correct grammar, and make my writing clearer while keeping my original thoughts and experiences. I reviewed the suggestions to ensure the final documents accurately reflected my project.
 
 ### Representative actual prompts and revisions
 
